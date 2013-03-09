@@ -29,6 +29,27 @@
 		ED2A49BC165C7FB1008F6F82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2A4989165C7FB1008F6F82 /* Foundation.framework */; };
 		ED2A49C4165C7FB1008F6F82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49C2165C7FB1008F6F82 /* InfoPlist.strings */; };
 		ED2A49C7165C7FB1008F6F82 /* FitLock2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2A49C6165C7FB1008F6F82 /* FitLock2Tests.m */; };
+		ED2A49DA165C95D1008F6F82 /* bg-1.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49D9165C95D1008F6F82 /* bg-1.png */; };
+		ED2A49E9165C9FBE008F6F82 /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2A49E8165C9FBE008F6F82 /* MyLabel.m */; };
+		ED2A49EF165CA657008F6F82 /* me.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49EE165CA657008F6F82 /* me.jpg */; };
+		ED2A49F1165CA7B5008F6F82 /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F0165CA7B5008F6F82 /* me.png */; };
+		ED2A49F3165CB067008F6F82 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F2165CB067008F6F82 /* splash.png */; };
+		ED2A49F5165CB08F008F6F82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F4165CB08F008F6F82 /* Default.png */; };
+		ED2A49F7165CB0A4008F6F82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F6165CB0A4008F6F82 /* Default@2x.png */; };
+		ED2A49F9165CB0C6008F6F82 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F8165CB0C6008F6F82 /* Default-568h@2x.png */; };
+		ED3BA5F916D227A900722029 /* bg-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3BA5F816D227A900722029 /* bg-2.png */; };
+		ED3BA5FC16D2289600722029 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3BA5FB16D2289600722029 /* UserData.m */; };
+		ED3BA5FF16D229A300722029 /* Workout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED3BA5FD16D229A300722029 /* Workout.cpp */; };
+		ED3BA60316D2304200722029 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3BA60216D2304200722029 /* pencil.png */; };
+		ED3BA60716D231E800722029 /* transparent.gif in Resources */ = {isa = PBXBuildFile; fileRef = ED3BA60616D231E800722029 /* transparent.gif */; };
+		ED52546716686E6B00694120 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED52546616686E6B00694120 /* icon.png */; };
+		ED52546916686EF800694120 /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = ED52546816686EF800694120 /* icon_retina.png */; };
+		ED52546C1668945600694120 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED52546B1668945600694120 /* ThirdViewController.m */; };
+		EDD77B4C16E54FC700335F1E /* pencil-1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD77B4B16E54FC700335F1E /* pencil-1.png */; };
+		EDD77B4E16E5773A00335F1E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */; };
+		EDF6069416C228DF00BA4CBA /* nav1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069116C228DE00BA4CBA /* nav1.png */; };
+		EDF6069516C228DF00BA4CBA /* nav2.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069216C228DE00BA4CBA /* nav2.png */; };
+		EDF6069616C228DF00BA4CBA /* nav3.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069316C228DF00BA4CBA /* nav3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,14 +63,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ED2A4983165C7FB1008F6F82 /* FitLock2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLock2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED2A4983165C7FB1008F6F82 /* FitLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A4987165C7FB1008F6F82 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ED2A4989165C7FB1008F6F82 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED2A498B165C7FB1008F6F82 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		ED2A498F165C7FB1008F6F82 /* FitLock2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FitLock2-Info.plist"; sourceTree = "<group>"; };
+		ED2A498F165C7FB1008F6F82 /* FitLock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FitLock-Info.plist"; sourceTree = "<group>"; };
 		ED2A4991165C7FB1008F6F82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED2A4993165C7FB1008F6F82 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		ED2A4995165C7FB1008F6F82 /* FitLock2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FitLock2-Prefix.pch"; sourceTree = "<group>"; };
+		ED2A4995165C7FB1008F6F82 /* FitLock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FitLock-Prefix.pch"; sourceTree = "<group>"; };
 		ED2A4996165C7FB1008F6F82 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED2A4997165C7FB1008F6F82 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ED2A4999165C7FB1008F6F82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -65,12 +86,37 @@
 		ED2A49AD165C7FB1008F6F82 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		ED2A49AF165C7FB1008F6F82 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		ED2A49B1165C7FB1008F6F82 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		ED2A49B8165C7FB1008F6F82 /* FitLock2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitLock2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED2A49B8165C7FB1008F6F82 /* FitLockTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitLockTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A49B9165C7FB1008F6F82 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		ED2A49C1165C7FB1008F6F82 /* FitLock2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FitLock2Tests-Info.plist"; sourceTree = "<group>"; };
+		ED2A49C1165C7FB1008F6F82 /* FitLockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FitLockTests-Info.plist"; sourceTree = "<group>"; };
 		ED2A49C3165C7FB1008F6F82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED2A49C5165C7FB1008F6F82 /* FitLock2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitLock2Tests.h; sourceTree = "<group>"; };
 		ED2A49C6165C7FB1008F6F82 /* FitLock2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FitLock2Tests.m; sourceTree = "<group>"; };
+		ED2A49D9165C95D1008F6F82 /* bg-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-1.png"; sourceTree = "<group>"; };
+		ED2A49E7165C9FBE008F6F82 /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		ED2A49E8165C9FBE008F6F82 /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
+		ED2A49EE165CA657008F6F82 /* me.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = me.jpg; sourceTree = "<group>"; };
+		ED2A49F0165CA7B5008F6F82 /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
+		ED2A49F2165CB067008F6F82 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		ED2A49F4165CB08F008F6F82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		ED2A49F6165CB0A4008F6F82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		ED2A49F8165CB0C6008F6F82 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		ED3BA5F816D227A900722029 /* bg-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-2.png"; path = "../../../../../../Desktop/bg-2.png"; sourceTree = "<group>"; };
+		ED3BA5FA16D2289600722029 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		ED3BA5FB16D2289600722029 /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
+		ED3BA5FD16D229A300722029 /* Workout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Workout.cpp; sourceTree = "<group>"; };
+		ED3BA5FE16D229A300722029 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		ED3BA60216D2304200722029 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		ED3BA60616D231E800722029 /* transparent.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = transparent.gif; sourceTree = "<group>"; };
+		ED52546616686E6B00694120 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		ED52546816686EF800694120 /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
+		ED52546A1668945600694120 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		ED52546B1668945600694120 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		EDD77B4B16E54FC700335F1E /* pencil-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil-1.png"; sourceTree = "<group>"; };
+		EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EDF6069116C228DE00BA4CBA /* nav1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav1.png; sourceTree = SOURCE_ROOT; };
+		EDF6069216C228DE00BA4CBA /* nav2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav2.png; sourceTree = SOURCE_ROOT; };
+		EDF6069316C228DF00BA4CBA /* nav3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav3.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDD77B4E16E5773A00335F1E /* AudioToolbox.framework in Frameworks */,
 				ED2A4988165C7FB1008F6F82 /* UIKit.framework in Frameworks */,
 				ED2A498A165C7FB1008F6F82 /* Foundation.framework in Frameworks */,
 				ED2A498C165C7FB1008F6F82 /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +147,12 @@
 		ED2A4978165C7FB1008F6F82 = {
 			isa = PBXGroup;
 			children = (
+				EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */,
+				ED52546816686EF800694120 /* icon_retina.png */,
+				ED52546616686E6B00694120 /* icon.png */,
+				ED2A49F8165CB0C6008F6F82 /* Default-568h@2x.png */,
+				ED2A49F6165CB0A4008F6F82 /* Default@2x.png */,
+				ED2A49F4165CB08F008F6F82 /* Default.png */,
 				ED2A498D165C7FB1008F6F82 /* FitLock2 */,
 				ED2A49BF165C7FB1008F6F82 /* FitLock2Tests */,
 				ED2A4986165C7FB1008F6F82 /* Frameworks */,
@@ -110,8 +163,8 @@
 		ED2A4984165C7FB1008F6F82 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED2A4983165C7FB1008F6F82 /* FitLock2.app */,
-				ED2A49B8165C7FB1008F6F82 /* FitLock2Tests.octest */,
+				ED2A4983165C7FB1008F6F82 /* FitLock.app */,
+				ED2A49B8165C7FB1008F6F82 /* FitLockTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +183,17 @@
 		ED2A498D165C7FB1008F6F82 /* FitLock2 */ = {
 			isa = PBXGroup;
 			children = (
+				EDD77B4B16E54FC700335F1E /* pencil-1.png */,
+				ED3BA60616D231E800722029 /* transparent.gif */,
+				ED3BA60216D2304200722029 /* pencil.png */,
+				ED3BA5F816D227A900722029 /* bg-2.png */,
+				EDF6069116C228DE00BA4CBA /* nav1.png */,
+				EDF6069216C228DE00BA4CBA /* nav2.png */,
+				EDF6069316C228DF00BA4CBA /* nav3.png */,
+				ED2A49F2165CB067008F6F82 /* splash.png */,
+				ED2A49F0165CA7B5008F6F82 /* me.png */,
+				ED2A49EE165CA657008F6F82 /* me.jpg */,
+				ED2A49D9165C95D1008F6F82 /* bg-1.png */,
 				ED2A4996165C7FB1008F6F82 /* AppDelegate.h */,
 				ED2A4997165C7FB1008F6F82 /* AppDelegate.m */,
 				ED2A499F165C7FB1008F6F82 /* MainStoryboard_iPhone.storyboard */,
@@ -143,6 +207,14 @@
 				ED2A49AF165C7FB1008F6F82 /* second.png */,
 				ED2A49B1165C7FB1008F6F82 /* second@2x.png */,
 				ED2A498E165C7FB1008F6F82 /* Supporting Files */,
+				ED2A49E7165C9FBE008F6F82 /* MyLabel.h */,
+				ED2A49E8165C9FBE008F6F82 /* MyLabel.m */,
+				ED52546A1668945600694120 /* ThirdViewController.h */,
+				ED52546B1668945600694120 /* ThirdViewController.m */,
+				ED3BA5FA16D2289600722029 /* UserData.h */,
+				ED3BA5FB16D2289600722029 /* UserData.m */,
+				ED3BA5FD16D229A300722029 /* Workout.cpp */,
+				ED3BA5FE16D229A300722029 /* Workout.h */,
 			);
 			path = FitLock2;
 			sourceTree = "<group>";
@@ -150,10 +222,10 @@
 		ED2A498E165C7FB1008F6F82 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ED2A498F165C7FB1008F6F82 /* FitLock2-Info.plist */,
+				ED2A498F165C7FB1008F6F82 /* FitLock-Info.plist */,
 				ED2A4990165C7FB1008F6F82 /* InfoPlist.strings */,
 				ED2A4993165C7FB1008F6F82 /* main.m */,
-				ED2A4995165C7FB1008F6F82 /* FitLock2-Prefix.pch */,
+				ED2A4995165C7FB1008F6F82 /* FitLock-Prefix.pch */,
 				ED2A4999165C7FB1008F6F82 /* Default.png */,
 				ED2A499B165C7FB1008F6F82 /* Default@2x.png */,
 				ED2A499D165C7FB1008F6F82 /* Default-568h@2x.png */,
@@ -174,7 +246,7 @@
 		ED2A49C0165C7FB1008F6F82 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ED2A49C1165C7FB1008F6F82 /* FitLock2Tests-Info.plist */,
+				ED2A49C1165C7FB1008F6F82 /* FitLockTests-Info.plist */,
 				ED2A49C2165C7FB1008F6F82 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -183,9 +255,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED2A4982165C7FB1008F6F82 /* FitLock2 */ = {
+		ED2A4982165C7FB1008F6F82 /* FitLock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED2A49CA165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLock2" */;
+			buildConfigurationList = ED2A49CA165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLock" */;
 			buildPhases = (
 				ED2A497F165C7FB1008F6F82 /* Sources */,
 				ED2A4980165C7FB1008F6F82 /* Frameworks */,
@@ -195,14 +267,14 @@
 			);
 			dependencies = (
 			);
-			name = FitLock2;
+			name = FitLock;
 			productName = FitLock2;
-			productReference = ED2A4983165C7FB1008F6F82 /* FitLock2.app */;
+			productReference = ED2A4983165C7FB1008F6F82 /* FitLock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ED2A49B7165C7FB1008F6F82 /* FitLock2Tests */ = {
+		ED2A49B7165C7FB1008F6F82 /* FitLockTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED2A49CD165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLock2Tests" */;
+			buildConfigurationList = ED2A49CD165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLockTests" */;
 			buildPhases = (
 				ED2A49B3165C7FB1008F6F82 /* Sources */,
 				ED2A49B4165C7FB1008F6F82 /* Frameworks */,
@@ -214,9 +286,9 @@
 			dependencies = (
 				ED2A49BE165C7FB1008F6F82 /* PBXTargetDependency */,
 			);
-			name = FitLock2Tests;
+			name = FitLockTests;
 			productName = FitLock2Tests;
-			productReference = ED2A49B8165C7FB1008F6F82 /* FitLock2Tests.octest */;
+			productReference = ED2A49B8165C7FB1008F6F82 /* FitLockTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -228,7 +300,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = CSCI477;
 			};
-			buildConfigurationList = ED2A497D165C7FB1008F6F82 /* Build configuration list for PBXProject "FitLock2" */;
+			buildConfigurationList = ED2A497D165C7FB1008F6F82 /* Build configuration list for PBXProject "FitLock" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -240,8 +312,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED2A4982165C7FB1008F6F82 /* FitLock2 */,
-				ED2A49B7165C7FB1008F6F82 /* FitLock2Tests */,
+				ED2A4982165C7FB1008F6F82 /* FitLock */,
+				ED2A49B7165C7FB1008F6F82 /* FitLockTests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,6 +333,22 @@
 				ED2A49AB165C7FB1008F6F82 /* first@2x.png in Resources */,
 				ED2A49B0165C7FB1008F6F82 /* second.png in Resources */,
 				ED2A49B2165C7FB1008F6F82 /* second@2x.png in Resources */,
+				ED2A49DA165C95D1008F6F82 /* bg-1.png in Resources */,
+				ED2A49EF165CA657008F6F82 /* me.jpg in Resources */,
+				ED2A49F1165CA7B5008F6F82 /* me.png in Resources */,
+				ED2A49F3165CB067008F6F82 /* splash.png in Resources */,
+				ED2A49F5165CB08F008F6F82 /* Default.png in Resources */,
+				ED2A49F7165CB0A4008F6F82 /* Default@2x.png in Resources */,
+				ED2A49F9165CB0C6008F6F82 /* Default-568h@2x.png in Resources */,
+				ED52546716686E6B00694120 /* icon.png in Resources */,
+				ED52546916686EF800694120 /* icon_retina.png in Resources */,
+				EDF6069416C228DF00BA4CBA /* nav1.png in Resources */,
+				EDF6069516C228DF00BA4CBA /* nav2.png in Resources */,
+				EDF6069616C228DF00BA4CBA /* nav3.png in Resources */,
+				ED3BA5F916D227A900722029 /* bg-2.png in Resources */,
+				ED3BA60316D2304200722029 /* pencil.png in Resources */,
+				ED3BA60716D231E800722029 /* transparent.gif in Resources */,
+				EDD77B4C16E54FC700335F1E /* pencil-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +387,10 @@
 				ED2A4998165C7FB1008F6F82 /* AppDelegate.m in Sources */,
 				ED2A49A7165C7FB1008F6F82 /* FirstViewController.m in Sources */,
 				ED2A49AE165C7FB1008F6F82 /* SecondViewController.m in Sources */,
+				ED2A49E9165C9FBE008F6F82 /* MyLabel.m in Sources */,
+				ED52546C1668945600694120 /* ThirdViewController.m in Sources */,
+				ED3BA5FC16D2289600722029 /* UserData.m in Sources */,
+				ED3BA5FF16D229A300722029 /* Workout.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +407,7 @@
 /* Begin PBXTargetDependency section */
 		ED2A49BE165C7FB1008F6F82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ED2A4982165C7FB1008F6F82 /* FitLock2 */;
+			target = ED2A4982165C7FB1008F6F82 /* FitLock */;
 			targetProxy = ED2A49BD165C7FB1008F6F82 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -412,9 +504,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FitLock2/FitLock2-Prefix.pch";
-				INFOPLIST_FILE = "FitLock2/FitLock2-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FitLock2/FitLock-Prefix.pch";
+				INFOPLIST_FILE = "FitLock2/FitLock-Info.plist";
+				PRODUCT_NAME = FitLock;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -423,9 +515,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FitLock2/FitLock2-Prefix.pch";
-				INFOPLIST_FILE = "FitLock2/FitLock2-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FitLock2/FitLock-Prefix.pch";
+				INFOPLIST_FILE = "FitLock2/FitLock-Info.plist";
+				PRODUCT_NAME = FitLock;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -440,8 +532,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FitLock2/FitLock2-Prefix.pch";
-				INFOPLIST_FILE = "FitLock2Tests/FitLock2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FitLock2Tests/FitLockTests-Info.plist";
+				PRODUCT_NAME = FitLockTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -457,8 +549,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FitLock2/FitLock2-Prefix.pch";
-				INFOPLIST_FILE = "FitLock2Tests/FitLock2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FitLock2Tests/FitLockTests-Info.plist";
+				PRODUCT_NAME = FitLockTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -467,7 +559,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED2A497D165C7FB1008F6F82 /* Build configuration list for PBXProject "FitLock2" */ = {
+		ED2A497D165C7FB1008F6F82 /* Build configuration list for PBXProject "FitLock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED2A49C8165C7FB1008F6F82 /* Debug */,
@@ -476,21 +568,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED2A49CA165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLock2" */ = {
+		ED2A49CA165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED2A49CB165C7FB1008F6F82 /* Debug */,
 				ED2A49CC165C7FB1008F6F82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		ED2A49CD165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLock2Tests" */ = {
+		ED2A49CD165C7FB1008F6F82 /* Build configuration list for PBXNativeTarget "FitLockTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED2A49CE165C7FB1008F6F82 /* Debug */,
 				ED2A49CF165C7FB1008F6F82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

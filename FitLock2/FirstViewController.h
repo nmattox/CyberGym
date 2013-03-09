@@ -8,6 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController<UIImagePickerControllerDelegate>{
+    UILabel *headerText, *nameText, *ageText, *lastWorkedOutText;
+    UIImageView *imageView;
+    UISlider *frequencySlider;
+    NSInteger *frequencyValue;
+    UILabel *sliderOutput;
+    UIButton *sunButton, *monButton, *tuesButton, *wedButton, *thursButton, *friButton, *satButton;
+}
+
+@property(nonatomic, retain) IBOutlet UILabel *headerText;
+@property IBOutlet UIImageView *profImageView;
+@property IBOutlet UISlider *frequencySlider;
+@property float *frequencyValue;
+@property IBOutlet UILabel *sliderOutput, *nameText, *ageText, *lastWorkedOutText;
+@property IBOutlet UIButton *sunButton, *monButton, *tuesButton, *wedButton, *thursButton, *friButton, *satButton, *updateButton, *changePhotoButton;
+
+-(IBAction)adjustSlider:(id)sender;
+-(IBAction)onDayClick:(id)sender;
+-(IBAction)updateButtonClicked:(id)sender;
+-(IBAction)changePhotoButtonClicked:(id)sender;
 
 @end
