@@ -1,15 +1,20 @@
 //
-//  ThirdViewController.h
-//  FitLock
+//  CountriesTableViewController.h
+//  UITableView-Tutorial
 //
-//  Created by Nolan Mattox on 11/29/12.
-//  Copyright (c) 2012 CSCI477. All rights reserved.
+//  Created by Costa Walcott on 9/28/11.
+//  Copyright 2011 Draconis Software. All rights reserved.
 //
+
+/* NOTE: CURRENTLY NOT USED!! */
 
 #import <UIKit/UIKit.h>
 
-@interface ThirdViewController : UITableViewController
+@interface ThirdViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
+	NSDictionary *countries;
+}
 
-- (void)insertNewObject:(id) sender;
+
+-(IBAction)editClicked:(id)sender;
 
 @end

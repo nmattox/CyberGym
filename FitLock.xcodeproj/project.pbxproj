@@ -37,19 +37,22 @@
 		ED2A49F5165CB08F008F6F82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F4165CB08F008F6F82 /* Default.png */; };
 		ED2A49F7165CB0A4008F6F82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F6165CB0A4008F6F82 /* Default@2x.png */; };
 		ED2A49F9165CB0C6008F6F82 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A49F8165CB0C6008F6F82 /* Default-568h@2x.png */; };
-		ED3BA5F916D227A900722029 /* bg-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3BA5F816D227A900722029 /* bg-2.png */; };
 		ED3BA5FC16D2289600722029 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3BA5FB16D2289600722029 /* UserData.m */; };
-		ED3BA5FF16D229A300722029 /* Workout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED3BA5FD16D229A300722029 /* Workout.cpp */; };
 		ED3BA60316D2304200722029 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3BA60216D2304200722029 /* pencil.png */; };
 		ED3BA60716D231E800722029 /* transparent.gif in Resources */ = {isa = PBXBuildFile; fileRef = ED3BA60616D231E800722029 /* transparent.gif */; };
 		ED52546716686E6B00694120 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED52546616686E6B00694120 /* icon.png */; };
 		ED52546916686EF800694120 /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = ED52546816686EF800694120 /* icon_retina.png */; };
 		ED52546C1668945600694120 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED52546B1668945600694120 /* ThirdViewController.m */; };
+		EDAED65B16EE66370069BBF8 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDAED65A16EE66370069BBF8 /* countries.plist */; };
+		EDAED6A816EE8A4C0069BBF8 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAED6A716EE8A4C0069BBF8 /* HistoryViewController.m */; };
 		EDD77B4C16E54FC700335F1E /* pencil-1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD77B4B16E54FC700335F1E /* pencil-1.png */; };
 		EDD77B4E16E5773A00335F1E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */; };
 		EDF6069416C228DF00BA4CBA /* nav1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069116C228DE00BA4CBA /* nav1.png */; };
 		EDF6069516C228DF00BA4CBA /* nav2.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069216C228DE00BA4CBA /* nav2.png */; };
 		EDF6069616C228DF00BA4CBA /* nav3.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069316C228DF00BA4CBA /* nav3.png */; };
+		EDF6916417023DF30032D0A2 /* ThirdViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF6916317023DF30032D0A2 /* ThirdViewController2.m */; };
+		EDF6916717029BC20032D0A2 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF6916617029BC20032D0A2 /* Workout.m */; };
+		EDF6916A1702A2FB0032D0A2 /* WorkoutArrayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF691691702A2FB0032D0A2 /* WorkoutArrayManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,22 +104,28 @@
 		ED2A49F4165CB08F008F6F82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		ED2A49F6165CB0A4008F6F82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		ED2A49F8165CB0C6008F6F82 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		ED3BA5F816D227A900722029 /* bg-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-2.png"; path = "../../../../../../Desktop/bg-2.png"; sourceTree = "<group>"; };
 		ED3BA5FA16D2289600722029 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		ED3BA5FB16D2289600722029 /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
-		ED3BA5FD16D229A300722029 /* Workout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Workout.cpp; sourceTree = "<group>"; };
-		ED3BA5FE16D229A300722029 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		ED3BA60216D2304200722029 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		ED3BA60616D231E800722029 /* transparent.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = transparent.gif; sourceTree = "<group>"; };
 		ED52546616686E6B00694120 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		ED52546816686EF800694120 /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		ED52546A1668945600694120 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		ED52546B1668945600694120 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		EDAED65A16EE66370069BBF8 /* countries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = countries.plist; path = "../../../../../../Downloads/UITableView-Tutorial-master/UITableView-Tutorial/countries.plist"; sourceTree = "<group>"; };
+		EDAED6A616EE8A4C0069BBF8 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		EDAED6A716EE8A4C0069BBF8 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		EDD77B4B16E54FC700335F1E /* pencil-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil-1.png"; sourceTree = "<group>"; };
 		EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EDF6069116C228DE00BA4CBA /* nav1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav1.png; sourceTree = SOURCE_ROOT; };
 		EDF6069216C228DE00BA4CBA /* nav2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav2.png; sourceTree = SOURCE_ROOT; };
 		EDF6069316C228DF00BA4CBA /* nav3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav3.png; sourceTree = SOURCE_ROOT; };
+		EDF6916217023DF30032D0A2 /* ThirdViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController2.h; sourceTree = "<group>"; };
+		EDF6916317023DF30032D0A2 /* ThirdViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController2.m; sourceTree = "<group>"; };
+		EDF6916517029BC20032D0A2 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		EDF6916617029BC20032D0A2 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		EDF691681702A2FB0032D0A2 /* WorkoutArrayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutArrayManager.h; sourceTree = "<group>"; };
+		EDF691691702A2FB0032D0A2 /* WorkoutArrayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutArrayManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +195,6 @@
 				EDD77B4B16E54FC700335F1E /* pencil-1.png */,
 				ED3BA60616D231E800722029 /* transparent.gif */,
 				ED3BA60216D2304200722029 /* pencil.png */,
-				ED3BA5F816D227A900722029 /* bg-2.png */,
 				EDF6069116C228DE00BA4CBA /* nav1.png */,
 				EDF6069216C228DE00BA4CBA /* nav2.png */,
 				EDF6069316C228DF00BA4CBA /* nav3.png */,
@@ -211,10 +219,16 @@
 				ED2A49E8165C9FBE008F6F82 /* MyLabel.m */,
 				ED52546A1668945600694120 /* ThirdViewController.h */,
 				ED52546B1668945600694120 /* ThirdViewController.m */,
+				EDF6916217023DF30032D0A2 /* ThirdViewController2.h */,
+				EDF6916317023DF30032D0A2 /* ThirdViewController2.m */,
+				EDAED6A616EE8A4C0069BBF8 /* HistoryViewController.h */,
+				EDAED6A716EE8A4C0069BBF8 /* HistoryViewController.m */,
+				EDF6916517029BC20032D0A2 /* Workout.h */,
+				EDF6916617029BC20032D0A2 /* Workout.m */,
+				EDF691681702A2FB0032D0A2 /* WorkoutArrayManager.h */,
+				EDF691691702A2FB0032D0A2 /* WorkoutArrayManager.m */,
 				ED3BA5FA16D2289600722029 /* UserData.h */,
 				ED3BA5FB16D2289600722029 /* UserData.m */,
-				ED3BA5FD16D229A300722029 /* Workout.cpp */,
-				ED3BA5FE16D229A300722029 /* Workout.h */,
 			);
 			path = FitLock2;
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 		ED2A498E165C7FB1008F6F82 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EDAED65A16EE66370069BBF8 /* countries.plist */,
 				ED2A498F165C7FB1008F6F82 /* FitLock-Info.plist */,
 				ED2A4990165C7FB1008F6F82 /* InfoPlist.strings */,
 				ED2A4993165C7FB1008F6F82 /* main.m */,
@@ -345,10 +360,10 @@
 				EDF6069416C228DF00BA4CBA /* nav1.png in Resources */,
 				EDF6069516C228DF00BA4CBA /* nav2.png in Resources */,
 				EDF6069616C228DF00BA4CBA /* nav3.png in Resources */,
-				ED3BA5F916D227A900722029 /* bg-2.png in Resources */,
 				ED3BA60316D2304200722029 /* pencil.png in Resources */,
 				ED3BA60716D231E800722029 /* transparent.gif in Resources */,
 				EDD77B4C16E54FC700335F1E /* pencil-1.png in Resources */,
+				EDAED65B16EE66370069BBF8 /* countries.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +405,10 @@
 				ED2A49E9165C9FBE008F6F82 /* MyLabel.m in Sources */,
 				ED52546C1668945600694120 /* ThirdViewController.m in Sources */,
 				ED3BA5FC16D2289600722029 /* UserData.m in Sources */,
-				ED3BA5FF16D229A300722029 /* Workout.cpp in Sources */,
+				EDAED6A816EE8A4C0069BBF8 /* HistoryViewController.m in Sources */,
+				EDF6916417023DF30032D0A2 /* ThirdViewController2.m in Sources */,
+				EDF6916717029BC20032D0A2 /* Workout.m in Sources */,
+				EDF6916A1702A2FB0032D0A2 /* WorkoutArrayManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

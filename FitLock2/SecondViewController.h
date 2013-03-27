@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThirdViewController2.h"
 
 @interface SecondViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIAccelerometerDelegate>{
     UIPickerView *workoutPicker;
@@ -28,6 +29,7 @@
     // below are vars for pushups
     bool *down;
     int directionChangeCount;
+    IBOutlet ThirdViewController2* historyView; // TODO: this should be the exact same class as the visible view
 }
 
 @property IBOutlet UIPickerView *workoutPicker;
@@ -41,6 +43,8 @@
 @property IBOutlet UIButton *startButton;
 
 @property IBOutlet UIProgressView *workoutProgress;
+
+@property IBOutlet UIViewController *thirdView;
 
 @property (nonatomic, retain) IBOutlet UIProgressView *progressX;
 

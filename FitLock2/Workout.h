@@ -2,13 +2,25 @@
 //  Workout.h
 //  FitLock
 //
-//  Created by Nolan Mattox on 2/18/13.
+//  Created by Nolan Mattox on 3/26/13.
 //  Copyright (c) 2013 CSCI477. All rights reserved.
 //
 
-#ifndef __FitLock__Workout__
-#define __FitLock__Workout__
+#import <Foundation/Foundation.h>
 
-#include <iostream>
+@interface Workout : NSObject{
+    NSDate *date;
+    NSString *type;
+    int *repNumber;
+    bool *completed;
+}
 
-#endif /* defined(__FitLock__Workout__) */
+@property NSDate *date;
+
+@property NSString *type;
+
+@property int *repNumber;
+
+@property bool *completed;
+
+@end

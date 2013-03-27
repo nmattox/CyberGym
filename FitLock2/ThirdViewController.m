@@ -1,133 +1,212 @@
 //
-//  ThirdViewController.m
-//  FitLock
+//  CountriesTableViewController.m
+//  UITableView-Tutorial
 //
-//  Created by Nolan Mattox on 11/29/12.
-//  Copyright (c) 2012 CSCI477. All rights reserved.
+//  Created by Costa Walcott on 9/28/11.
+//  Copyright 2011 Draconis Software. All rights reserved.
 //
+
+/* NOTE: CURRENTLY NOT USED!! */
 
 #import "ThirdViewController.h"
+#import "HistoryViewController.h"
 
-@interface ThirdViewController (){
-    NSMutableArray *historyItems;
-}
-
+@interface ThirdViewController ()
+@property (nonatomic, retain) NSDictionary *countries;
 @end
 
 @implementation ThirdViewController
 
+@synthesize countries;
 
-- (id)initWithStyle:(UITableViewStyle)style
+
+- (void)didReceiveMemoryWarning
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
 }
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+}
+
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+	
+	self.countries = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"plist"]];
+    
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
+    //self.clearsSelectionOnViewWillAppear = NO;
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [historyItems addObject:@"Cell"];
-    [historyItems addObject:@"Cell"];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidUnload
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+	
+	self.countries = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 1;
+    return [self.countries count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	return [[self.countries allKeys] objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [historyItems count];
+	NSString *continent = [self tableView:tableView titleForHeaderInSection:section];
+	return [[self.countries valueForKey:continent] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"CountryCell";
     
-    NSString *cellValue = [historyItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = cellValue;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
+        [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"plist"];
+        //cell = friendCell;
+    }
+    
+    // Configure the cell...
+	NSString *continent = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+	NSString *country = [[self.countries valueForKey:continent] objectAtIndex:indexPath.row];
+	
+	cell.textLabel.text = country;
+	
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
     return cell;
 }
 
-- (void)insertNewObject:(id)sender
-{
-   
-    [historyItems insertObject:@"CELL" atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ Functions added by Nolan
+ */
+-(IBAction)editClicked:(id)sender
 {
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
+    
+	NSString *continent = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+	NSString *country = [[self.countries valueForKey:continent] objectAtIndex:indexPath.row];
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+													message:[NSString stringWithFormat:@"You selected %@!", country]
+												   delegate:nil
+										  cancelButtonTitle:@"OK"
+										  otherButtonTitles:nil];
+	[alert show];
+	//[alert release];
+	
+     
+
+
+    //Value Selected by user
+    NSString *selectedValue = [[self.countries valueForKey:continent] objectAtIndex:indexPath.row];;
+    NSLog(@"value selected");
+    NSLog(@" value = %@", selectedValue);
+    //Initialize new viewController
+    HistoryViewController *viewController = [[HistoryViewController alloc] initWithNibName:@"NewHistoryController" bundle:nil];
+    //Pass selected value to a property declared in NewViewController
+    viewController.valueToPrint = selectedValue;
+    [viewController changeLabel];
+    //Push new view to navigationController stack
+    [self.navigationController pushViewController:viewController animated:YES];
+
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
      */
-    
-    
 }
+ 
 
 @end

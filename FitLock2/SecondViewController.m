@@ -8,6 +8,9 @@
 
 #import "SecondViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "Workout.h"
+#import "ThirdViewController2.h"
+#import "WorkoutArrayManager.h"
 
 @interface SecondViewController ()
 
@@ -106,15 +109,14 @@
         {
             [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
             //NSLog(@"workout coutner is 0, Y and Z Values = %f %f ", currentAccelYval, currentAccelZval);
-            if(fabsf(currentAccelYval) < 0.16 && fabsf(currentAccelXval) < 0.16)
-            {
-                NSLog(@"initial accel starting values set");
-                firstValues[0] = currentAccelXval;
-                firstValues[1] = currentAccelYval;
-                firstValues[2] = currentAccelZval;
-                workoutThreadCounter++;
-                [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
-            }
+            
+            NSLog(@"initial accel starting values set");
+            firstValues[0] = currentAccelXval;
+            firstValues[1] = currentAccelYval;
+            firstValues[2] = currentAccelZval;
+            workoutThreadCounter++;
+            [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
+            NSLog(@"Beginning X, Y, Z = %f, %f, %f", firstValues[0], firstValues[1], firstValues[2]);
         }
         else
         {
@@ -129,10 +131,13 @@
                 float xVariance = fabsf(currentAccelXval - firstValues[0]);
                 float yVariance = fabsf(currentAccelYval - firstValues[1]);
                 float zVariance = fabsf(currentAccelZval - firstValues[2]);
+                NSLog(@" X, Y, Z = %f, %f, %f", currentAccelXval, currentAccelYval, currentAccelZval);
                 [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
+                
+                 //PUSHUPS
                 if(!down)
                 {
-                    if(yVariance > .15)
+                    if(yVariance > .7)
                     {
                         down = true;
                         directionChangeCount = 0;
@@ -144,7 +149,8 @@
                 }
                 else
                 {
-                    if(yVariance > .15)
+                    
+                    if(yVariance > .7)
                     {
                         down = false;
                         directionChangeCount = 0;
@@ -156,6 +162,97 @@
                         
                     }
                 }
+                 
+                
+                /* //sit-ups
+                if(!down)
+                {
+                    if(yVariance > .6)
+                    {
+                        down = true;
+                        directionChangeCount = 0;
+                        firstValues[0] = currentAccelXval;
+                        firstValues[1] = currentAccelYval;
+                        firstValues[2] = currentAccelZval;
+                        NSLog(@"FINISHED THE DOWN PORTION");
+                    }
+                }
+                else
+                {
+                    
+                    if(yVariance > .6)
+                    {
+                        down = false;
+                        directionChangeCount = 0;
+                        firstValues[0] = currentAccelXval;
+                        firstValues[1] = currentAccelYval;
+                        firstValues[2] = currentAccelZval;
+                        NSLog(@"FINISHED THE UP PORTION");
+                        _workoutProgress.progress = actual + incrementValue;
+                        
+                    }
+                }
+                 */
+                
+                /*//squats
+                if(!down)
+                {
+                    if(zVariance > .65)
+                    {
+                        down = true;
+                        directionChangeCount = 0;
+                        firstValues[0] = currentAccelXval;
+                        firstValues[1] = currentAccelYval;
+                        firstValues[2] = currentAccelZval;
+                        NSLog(@"FINISHED THE DOWN PORTION");
+                    }
+                }
+                else
+                {
+                    
+                    if(zVariance > .65)
+                    {
+                        down = false;
+                        directionChangeCount = 0;
+                        firstValues[0] = currentAccelXval;
+                        firstValues[1] = currentAccelYval;
+                        firstValues[2] = currentAccelZval;
+                        NSLog(@"FINISHED THE UP PORTION");
+                        _workoutProgress.progress = actual + incrementValue;
+                        
+                    }
+                }
+                 */
+                
+                /*// pull-ups
+                if(!down)
+                {
+                    if(zVariance > .4)
+                    {
+                        down = true;
+                        directionChangeCount = 0;
+                        firstValues[0] = currentAccelXval;
+                        firstValues[1] = currentAccelYval;
+                        firstValues[2] = currentAccelZval;
+                        NSLog(@"FINISHED THE DOWN PORTION");
+                    }
+                }
+                else
+                {
+                    
+                    if(zVariance > .4)
+                    {
+                        down = false;
+                        directionChangeCount = 0;
+                        firstValues[0] = currentAccelXval;
+                        firstValues[1] = currentAccelYval;
+                        firstValues[2] = currentAccelZval;
+                        NSLog(@"FINISHED THE UP PORTION");
+                        _workoutProgress.progress = actual + incrementValue;
+                        
+                    }
+                }*/
+                
                 /* below iff statement is the "flick" accelerometer test
                 if(ABS(lastAccelYval - currentAccelYval) > .8)
                 {
@@ -167,6 +264,7 @@
             }
             else
             {
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 workingOut = false;
                 down = false;
                 _workoutProgress.progress = 0;
@@ -177,7 +275,17 @@
                 UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!" message:@"You've successfully reached your workout goal!" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Post to Facebook", nil];
                 alert.alertViewStyle = UIAlertViewStyleDefault;
                 [alert show];
-               
+                
+                // creates finished workout object and saves it to user defaults (saved to system)
+                Workout *w = [[Workout alloc] init];
+                WorkoutArrayManager *wm;
+                w.date = [NSDate date];
+                w.type = @"Pushups";
+                w.repNumber = stepVal;
+                w.completed = TRUE;
+                NSMutableArray *workoutArr = [wm getWorkoutArrayFromDefaults];
+                [workoutArr addObject:w];
+                [defaults setObject:w forKey:@"workouts"];
             }
         }
         /*

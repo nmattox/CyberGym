@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 CSCI477. All rights reserved.
 //
 
+/* NOTE: CURRENTLY NOT USED!! */
+
 #import <Foundation/Foundation.h>
 
 @interface UserData : NSObject{

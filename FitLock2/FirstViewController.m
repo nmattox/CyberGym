@@ -101,7 +101,7 @@
     // monday is selected day
     if([defaults objectForKey:@"monday"])
     {
-
+        
     }
     else
     {
@@ -163,6 +163,14 @@
     else
     {
         _profImageView.image = [UIImage imageWithData:[defaults dataForKey:@"userImage"]];
+    }
+    if(![defaults objectForKey:@"workouts"])
+    {
+        [defaults setObject:[[NSArray alloc] init] forKey:@"workouts"];
+    }
+    else
+    {
+        // TODO: don't think we really need to load the array from defaults here
     }
     
     
