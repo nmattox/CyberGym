@@ -62,6 +62,15 @@
     [_updateButton setBackgroundImage:[UIImage imageNamed:@"pencil-1.png"] forState:UIControlStateNormal];
     [_changePhotoButton setBackgroundImage:[UIImage imageNamed:@"transparent.gif"] forState:UIControlStateNormal];
     
+    // assign tags to buttons
+    _monButton.tag = 0;
+    _tuesButton.tag = 1;
+    _wedButton.tag = 2;
+    _thursButton.tag = 3;
+    _friButton.tag = 4;
+    _satButton.tag = 5;
+    _sunButton.tag = 6;
+    
     
     // Load user's default data
     
@@ -97,63 +106,105 @@
         [_frequencySlider setValue:[defaults floatForKey:@"frequencyBarValue"]];
         _sliderOutput.text = [NSString stringWithFormat:@"%.00f",[defaults floatForKey:@"frequencyBarValue"]*10];
     }
+    
     // update selected days for workout
+    
     // monday is selected day
-    if([defaults objectForKey:@"monday"])
+    if([defaults boolForKey:@"monday"]) // monday selected
     {
+        [_monButton setBackgroundImage:[UIImage imageNamed:@"MonBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"monday selected");
+    }
+    else // monday not selected
+    {
+        [_monButton setBackgroundImage:[UIImage imageNamed:@"MonWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"monday not selected");
+        [defaults setBool:FALSE forKey:@"monday"];
+    }
+    
+    if([defaults boolForKey:@"tuesday"])
+    {
+        [_tuesButton setBackgroundImage:[UIImage imageNamed:@"TueBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"tues selected");
+
+    }
+    else
+    {
+        [_tuesButton setBackgroundImage:[UIImage imageNamed:@"TueWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"tues not selected");
+        [defaults setBool:FALSE forKey:@"tuesday"];
+
+    }
+    
+    if([defaults boolForKey:@"wednesday"])
+    {
+        [_wedButton setBackgroundImage:[UIImage imageNamed:@"WedBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"wed selected");
         
     }
     else
     {
-        
+        [_wedButton setBackgroundImage:[UIImage imageNamed:@"WedWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"wed not selected");
+        [defaults setBool:FALSE forKey:@"wednesday"];
+
     }
-    if([defaults objectForKey:@"tuesday"])
+    
+    if([defaults boolForKey:@"thursday"])
     {
-        
-    }
-    else
-    {
-        
-    }
-    if([defaults objectForKey:@"wednesday"])
-    {
-        
+        [_thursButton setBackgroundImage:[UIImage imageNamed:@"ThuBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"thurs selected");
+
     }
     else
     {
-        
+        [_thursButton setBackgroundImage:[UIImage imageNamed:@"ThuWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"thurs not selected");
+        [defaults setBool:FALSE forKey:@"thursday"];
+
     }
-    if([defaults objectForKey:@"thursday"])
+    
+    if([defaults boolForKey:@"friday"])
     {
-        
-    }
-    else
-    {
-        
-    }
-    if([defaults objectForKey:@"friday"])
-    {
-        
-    }
-    else
-    {
-        
-    }
-    if([defaults objectForKey:@"saturday"])
-    {
-        
+        [_friButton setBackgroundImage:[UIImage imageNamed:@"FriBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"fri selected");
+
+
     }
     else
     {
-        
+        [_friButton setBackgroundImage:[UIImage imageNamed:@"FriWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"fri not selected");
+        [defaults setBool:FALSE forKey:@"friday"];
+
     }
-    if([defaults objectForKey:@"sunday"])
+    
+    if([defaults boolForKey:@"saturday"])
     {
-        
+        [_satButton setBackgroundImage:[UIImage imageNamed:@"SatBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"sat selected");
+
     }
     else
     {
-        
+        [_satButton setBackgroundImage:[UIImage imageNamed:@"SatWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"sat not selected");
+        [defaults setBool:FALSE forKey:@"saturday"];
+
+    }
+    
+    if([defaults boolForKey:@"sunday"])
+    {
+        [_sunButton setBackgroundImage:[UIImage imageNamed:@"SunBlue.png"] forState:UIControlStateNormal];
+        NSLog(@"sun selected");
+
+    }
+    else
+    {
+        [_sunButton setBackgroundImage:[UIImage imageNamed:@"SunWhite.png"] forState:UIControlStateNormal];
+        NSLog(@"sun not selected");
+        [defaults setBool:FALSE forKey:@"sunday"];
+
     }
     if(![defaults dataForKey:@"userImage"])
     {
@@ -202,87 +253,122 @@
 -(IBAction)onDayClick:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *buttonString = [sender currentTitle];
-    if([buttonString isEqualToString:@"Mon"])
+    NSLog(@"day button clicked, button ID = %d", ((UIButton*)sender).tag);
+    if(((UIButton*)sender).tag == 0)
     {
-        if(![defaults objectForKey:@"monday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"monday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
             [defaults setBool:TRUE forKey:@"monday"];
+            [_monButton setBackgroundImage:[UIImage imageNamed:@"MonBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+
         }
         else
         {
             [defaults setBool:FALSE forKey:@"monday"];
+            [_monButton setBackgroundImage:[UIImage imageNamed:@"MonWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"monday"]);
         }
     }
-    else if([buttonString isEqualToString:@"Tue"])
+    else if(((UIButton*)sender).tag == 1)
     {
-        if(![defaults objectForKey:@"tuesday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"tuesday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
             [defaults setBool:TRUE forKey:@"tuesday"];
+            [_tuesButton setBackgroundImage:[UIImage imageNamed:@"TueBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+            
         }
         else
         {
             [defaults setBool:FALSE forKey:@"tuesday"];
+            [_tuesButton setBackgroundImage:[UIImage imageNamed:@"TueWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"tuesday"]);
         }
     }
-    else if([buttonString isEqualToString:@"Wed"])
+    else if(((UIButton*)sender).tag == 2)
     {
-        if(![defaults objectForKey:@"wednesday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"wednesday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
             [defaults setBool:TRUE forKey:@"wednesday"];
+            [_wedButton setBackgroundImage:[UIImage imageNamed:@"WedBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+            
         }
         else
         {
             [defaults setBool:FALSE forKey:@"wednesday"];
+            [_wedButton setBackgroundImage:[UIImage imageNamed:@"WedWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"wednesday"]);
         }
     }
-    else if([buttonString isEqualToString:@"Thu"])
+    else if(((UIButton*)sender).tag == 3)
     {
-        if(![defaults objectForKey:@"monday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"thursday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
-            [defaults setBool:TRUE forKey:@"monday"];
+            [defaults setBool:TRUE forKey:@"thursday"];
+            [_thursButton setBackgroundImage:[UIImage imageNamed:@"ThuBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+            
         }
         else
         {
-            [defaults setBool:FALSE forKey:@"monday"];
+            [defaults setBool:FALSE forKey:@"thursday"];
+            [_thursButton setBackgroundImage:[UIImage imageNamed:@"ThuWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"thursday"]);
         }
     }
-    else if([buttonString isEqualToString:@"Fri"])
+    else if(((UIButton*)sender).tag == 4)
     {
-        if(![defaults objectForKey:@"monday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"friday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
-            [defaults setBool:TRUE forKey:@"monday"];
+            [defaults setBool:TRUE forKey:@"friday"];
+            [_friButton setBackgroundImage:[UIImage imageNamed:@"FriBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+            
         }
         else
         {
-            [defaults setBool:FALSE forKey:@"monday"];
+            [defaults setBool:FALSE forKey:@"friday"];
+            [_friButton setBackgroundImage:[UIImage imageNamed:@"FriWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"friday"]);
         }
     }
-    else if([buttonString isEqualToString:@"Sat"])
+    else if(((UIButton*)sender).tag == 5)
     {
-        if(![defaults objectForKey:@"monday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"saturday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
-            [defaults setBool:TRUE forKey:@"monday"];
+            [defaults setBool:TRUE forKey:@"saturday"];
+            [_satButton setBackgroundImage:[UIImage imageNamed:@"SatBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+            
         }
         else
         {
-            [defaults setBool:FALSE forKey:@"monday"];
+            [defaults setBool:FALSE forKey:@"saturday"];
+            [_satButton setBackgroundImage:[UIImage imageNamed:@"SatWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"saturday"]);
         }
     }
-    else if([buttonString isEqualToString:@"Sun"])
+    else if(((UIButton*)sender).tag == 6)
     {
-        if(![defaults objectForKey:@"monday"]) // TODO: check if this checks for both value == 0 and value == nil
+        if([defaults boolForKey:@"sunday"] == FALSE) // TODO: check if this checks for both value == 0 and value == nil
         {
-            [defaults setBool:TRUE forKey:@"monday"];
+            [defaults setBool:TRUE forKey:@"sunday"];
+            [_sunButton setBackgroundImage:[UIImage imageNamed:@"SunBlue.png"] forState:UIControlStateNormal];
+            NSLog(@"change to blue");
+            
         }
         else
         {
-            [defaults setBool:FALSE forKey:@"monday"];
+            [defaults setBool:FALSE forKey:@"sunday"];
+            [_sunButton setBackgroundImage:[UIImage imageNamed:@"SunWhite.png"] forState:UIControlStateNormal];
+            NSLog(@"change to white, value %@",[defaults objectForKey:@"sunday"]);
         }
     }
     else
     {
-        NSLog(@"ERROR OCCURRED!!! SHOULDNT GET HERE!");
+        NSLog(@"ERROR OCCURRED!!! SHOULDNT GET HERE! this is the button clicked: %d", ((UIButton*)sender).tag);
     }
 }
 

@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SecondViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    SecondViewController *secondView;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

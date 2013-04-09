@@ -18,7 +18,7 @@
 
 @implementation SecondViewController
 
-@synthesize workoutPicker = _workoutPicker;
+//@synthesize workoutPicker = _workoutPicker;
 
 @synthesize workoutLabel = _workoutLabel;
 
@@ -27,6 +27,8 @@
 @synthesize repStepper = _repStepper;
 
 @synthesize startButton = _startButton;
+
+@synthesize cancelButton = _cancelButton;
 
 @synthesize workoutProgress = _workoutProgress;
 
@@ -41,13 +43,6 @@
     // set up background 
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg-2.png"]];
     self.view.backgroundColor = background;
-    
-    // set up array of workouts
-    [workoutList addObject:@"Pushups"];
-    [workoutList addObject:@"Pull-Ups"];
-    [workoutList addObject:@"Sit-Ups"];
-    [workoutList addObject:@"Running"];
-    [workoutList addObject:@"Squats"];
     
     // initialize progress bar
     progress = 0;
@@ -77,6 +72,21 @@
     workoutThreadCounter = 0;
     down = false;
     directionChangeCount = 0;
+    
+    // set up array of workouts
+    workoutList = [[NSMutableArray alloc] init];
+    [workoutList addObject:@"Pushups"];
+    [workoutList addObject:@"Pull-Ups"];
+    [workoutList addObject:@"Sit-Ups"];
+    [workoutList addObject:@"Squats"];
+    workoutPicker.hidden = true;
+    workoutPickerToolbar.hidden = true;
+    
+    // initialize workout selection
+    workoutSelection = @"Pushups";
+    
+    // initialize cancel button
+    _cancelButton.hidden = true;
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,9 +97,12 @@
 
 -(IBAction)plusButtonHit:(id)sender
 {
-    stepVal = [_repStepper value];
-    NSString *repString = [NSString stringWithFormat:@"%i",stepVal];
-    [_repNumber setText:repString];
+    if(!workingOut)
+    {
+        stepVal = [_repStepper value];
+        NSString *repString = [NSString stringWithFormat:@"%i",stepVal];
+        [_repNumber setText:repString];
+    }
 }
 
 -(IBAction)startButtonHit:(id)sender
@@ -100,6 +113,36 @@
     
 }
 
+-(IBAction)cancelButtonHit:(id)sender
+{
+    _startButton.hidden = false;
+    _cancelButton.hidden = true;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    workingOut = false;
+    down = false;
+    _workoutProgress.progress = 0;
+    workoutThreadCounter = 0;
+    //TODO: create and save a "workout object"
+    UIAlertView *cancelMessage = [[UIAlertView alloc] initWithTitle:@"Workout Incomplete"
+                                                      message:@"You have canceled your workout."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"Dismiss"
+                                            otherButtonTitles:nil];
+    cancelMessage.alertViewStyle = UIAlertViewStyleDefault;
+    [cancelMessage show];
+    
+    // creates finished workout object and saves it to user defaults (saved to system)
+    Workout *w = [[Workout alloc] init];
+    WorkoutArrayManager *wm;
+    w.date = [NSDate date];
+    w.type = @"Pushups";
+    w.repNumber = stepVal;
+    w.completed = TRUE;
+    NSMutableArray *workoutArr = [wm getWorkoutArrayFromDefaults];
+    [workoutArr addObject:w];
+    [defaults setObject:w forKey:@"workouts"];
+}
+
 -(void)workoutProgressThread
 {
     if(workingOut)
@@ -107,6 +150,8 @@
         //NSLog(@"workout counter = %d", workoutThreadCounter);
         if(workoutThreadCounter == 0) // TODO: change workoutThreadCounter to boolean
         {
+            _startButton.hidden = true;
+            _cancelButton.hidden = false;
             [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
             //NSLog(@"workout coutner is 0, Y and Z Values = %f %f ", currentAccelYval, currentAccelZval);
             
@@ -135,122 +180,138 @@
                 [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
                 
                  //PUSHUPS
-                if(!down)
-                {
-                    if(yVariance > .7)
+                //if([workoutSelection isEqualToString:@"Pushups"])
+                //{
+                    if(!down)
                     {
-                        down = true;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE DOWN PORTION");
+                        if(yVariance > .7)
+                        {
+                            down = true;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE DOWN PORTION");
+                            AudioServicesPlaySystemSound (1000);
+                        }
                     }
-                }
-                else
-                {
-                    
-                    if(yVariance > .7)
+                    else
                     {
-                        down = false;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE UP PORTION");
-                        _workoutProgress.progress = actual + incrementValue;
                         
+                        if(yVariance > .7)
+                        {
+                            down = false;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE UP PORTION");
+                            _workoutProgress.progress = actual + incrementValue;
+                            AudioServicesPlaySystemSound (1000);
+                        }
                     }
-                }
-                 
+                //}
                 
-                /* //sit-ups
-                if(!down)
+                /*
+                 //sit-ups
+                else if([workoutSelection isEqualToString:@"Sit-ups"])
                 {
-                    if(yVariance > .6)
+                    if(!down)
                     {
-                        down = true;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE DOWN PORTION");
+                        if(yVariance > .6)
+                        {
+                            down = true;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE DOWN PORTION");
+                        }
                     }
-                }
-                else
-                {
-                    
-                    if(yVariance > .6)
+                    else
                     {
-                        down = false;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE UP PORTION");
-                        _workoutProgress.progress = actual + incrementValue;
                         
+                        if(yVariance > .6)
+                        {
+                            down = false;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE UP PORTION");
+                            _workoutProgress.progress = actual + incrementValue;
+                            
+                        }
                     }
                 }
-                 */
                 
-                /*//squats
-                if(!down)
+                //squats
+                else if([workoutSelection isEqualToString:@"Squats"])
                 {
-                    if(zVariance > .65)
+                    if(!down)
                     {
-                        down = true;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE DOWN PORTION");
+                        if(zVariance > .65)
+                        {
+                            down = true;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE DOWN PORTION");
+                        }
                     }
-                }
-                else
-                {
-                    
-                    if(zVariance > .65)
+                    else
                     {
-                        down = false;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE UP PORTION");
-                        _workoutProgress.progress = actual + incrementValue;
                         
+                        if(zVariance > .65)
+                        {
+                            down = false;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE UP PORTION");
+                            _workoutProgress.progress = actual + incrementValue;
+                            
+                        }
                     }
                 }
-                 */
                 
-                /*// pull-ups
-                if(!down)
+                // pull-ups
+                
+                else if([workoutSelection isEqualToString:@"Pull-ups"])
                 {
-                    if(zVariance > .4)
+                    if(!down)
                     {
-                        down = true;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE DOWN PORTION");
+                        if(zVariance > .4)
+                        {
+                            down = true;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE DOWN PORTION");
+                        }
+                    }
+                    else
+                    {
+                        
+                        if(zVariance > .4)
+                        {
+                            down = false;
+                            directionChangeCount = 0;
+                            firstValues[0] = currentAccelXval;
+                            firstValues[1] = currentAccelYval;
+                            firstValues[2] = currentAccelZval;
+                            NSLog(@"FINISHED THE UP PORTION");
+                            _workoutProgress.progress = actual + incrementValue;
+                            
+                        }
                     }
                 }
                 else
                 {
-                    
-                    if(zVariance > .4)
-                    {
-                        down = false;
-                        directionChangeCount = 0;
-                        firstValues[0] = currentAccelXval;
-                        firstValues[1] = currentAccelYval;
-                        firstValues[2] = currentAccelZval;
-                        NSLog(@"FINISHED THE UP PORTION");
-                        _workoutProgress.progress = actual + incrementValue;
-                        
-                    }
+                    NSLog(@"ERROR: we shouldn't get to this part of the code");
                 }*/
                 
                 /* below iff statement is the "flick" accelerometer test
@@ -264,6 +325,8 @@
             }
             else
             {
+                _startButton.hidden = false;
+                _cancelButton.hidden = true;
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 workingOut = false;
                 down = false;
@@ -338,6 +401,24 @@
  * Below is code for managing the picker that doesn't yet work
  */
 
+-(IBAction)showWorkoutSelector:(id)sender
+{
+    if(!workingOut)
+    {
+        workoutPicker.hidden = false;
+        workoutPickerToolbar.hidden = false;
+    }
+}
+
+-(IBAction)hideWorkoutSelector:(id)sender
+{
+    // this code will take the selection set in didSelectRow and use it to make the necessary workout logic changes
+    workoutPicker.hidden = true;
+    workoutPickerToolbar.hidden = true;
+    [_workoutLabel setText:workoutSelection];
+    NSLog(@"within hiding workout... changing workoutLabe.text = %@", workoutSelection);
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
 {
     
@@ -353,6 +434,13 @@
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return [workoutList objectAtIndex:row];
+}
+
+//PickerViewController.m
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    // this code will set the selection...
+    workoutSelection = [workoutList objectAtIndex:row];
+    NSLog(@"Selected workout: %@. Index of selected workout: %i", [workoutList objectAtIndex:row], row);
 }
 
 @end

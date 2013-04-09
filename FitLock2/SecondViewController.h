@@ -10,12 +10,13 @@
 #import "ThirdViewController2.h"
 
 @interface SecondViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIAccelerometerDelegate>{
-    UIPickerView *workoutPicker;
-    NSMutableArray *workoutList;
+    //UIPickerView *workoutPicker;
+    //NSMutableArray *workoutList;
     UILabel *workoutLabel;
     UILabel *repNumber;
     UIStepper *repStepper;
     UIButton *startButton;
+    UIButton *cancelButton;
     UIProgressView *workoutProgress;
     bool workingOut;
     
@@ -30,9 +31,16 @@
     bool *down;
     int directionChangeCount;
     IBOutlet ThirdViewController2* historyView; // TODO: this should be the exact same class as the visible view
+    
+    // picker stuff below
+    IBOutlet UIPickerView *workoutPicker;
+    NSMutableArray *workoutList;
+    IBOutlet UIToolbar *workoutPickerToolbar;
+    IBOutlet UIBarButtonItem *workoutPickerDoneButton;
+    NSString *workoutSelection;
 }
 
-@property IBOutlet UIPickerView *workoutPicker;
+//@property IBOutlet UIPickerView *workoutPicker;
 
 @property IBOutlet UILabel *workoutLabel;
 
@@ -41,6 +49,8 @@
 @property IBOutlet UIStepper *repStepper;
 
 @property IBOutlet UIButton *startButton;
+
+@property IBOutlet UIButton *cancelButton;
 
 @property IBOutlet UIProgressView *workoutProgress;
 
@@ -63,6 +73,12 @@
 -(IBAction)plusButtonHit:(id)sender;
 
 -(IBAction)startButtonHit:(id)sender;
+
+-(IBAction)cancelButtonHit:(id)sender;
+
+-(IBAction)showWorkoutSelector:(id)sender;
+
+-(IBAction)hideWorkoutSelector:(id)sender;
 
 -(void)workoutProgressThread:(double)sv;
 
