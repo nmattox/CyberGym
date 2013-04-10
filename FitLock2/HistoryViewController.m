@@ -59,7 +59,7 @@
     _repsLabel.text = [NSString stringWithFormat:@"%d", _workout.repNumber];
     if(_workout.completed)
     {
-        _goalReachedLabel.text = @"Yes!!!!";
+        _goalReachedLabel.text = @"Yes!";
     }
     else
     {

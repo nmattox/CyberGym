@@ -12,6 +12,7 @@
 
 @synthesize window = _window;
 @synthesize secondView = _secondView;
+@synthesize thirdView = _thirdView;
 @synthesize session = _session;
 
 
@@ -52,15 +53,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIStoryboard *sboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
+                                                     bundle:nil];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard *sboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
-                                                         bundle:nil];
         self.secondView = [sboard instantiateInitialViewController];
     } else {
         //self.secondView = [[SecondViewController alloc] initWithNibName:@"SLViewController_iPad" bundle:nil];
     }
     self.window.rootViewController = self.secondView;
+    self.thirdView = [sboard instantiateInitialViewController];
     [self.window makeKeyAndVisible];
     return YES;
 }

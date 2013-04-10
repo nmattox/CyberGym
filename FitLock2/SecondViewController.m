@@ -12,6 +12,7 @@
 #import "ThirdViewController2.h"
 #import "WorkoutArrayManager.h"
 #import "AppDelegate.h"
+#import "UserWorkoutHistory.h"
 
 @interface SecondViewController ()
 
@@ -158,14 +159,41 @@
     
     // creates finished workout object and saves it to user defaults (saved to system)
     Workout *w = [[Workout alloc] init];
-    WorkoutArrayManager *wm;
     w.date = [NSDate date];
-    w.type = @"Pushups";
+    w.type = workoutSelection;
     w.repNumber = stepVal;
-    w.completed = TRUE;
-    NSMutableArray *workoutArr = [wm getWorkoutArrayFromDefaults];
-    [workoutArr addObject:w];
-    [defaults setObject:w forKey:@"workouts"];
+    w.completed = FALSE;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/Y hh:mm a"];
+    NSString *stringFromDate = [formatter stringFromDate:w.date];
+    [defaults setObject:stringFromDate forKey:@"lastWorkoutDate"];
+    if([defaults objectForKey:@"workouts"] == nil)
+    {
+        // first make new array for workouts
+        NSMutableArray *firstWorkoutArray = [[NSMutableArray alloc] init];
+        // create a NSData encoding for the workout w (one just completed)
+        NSData *workoutHistData = [NSKeyedArchiver archivedDataWithRootObject:w];
+        // save workout data to array
+        [firstWorkoutArray addObject:workoutHistData];
+        // save workout array to workouts object
+        [defaults setObject:firstWorkoutArray forKey:@"workouts"];
+    }
+    // if the nsmutable array for workouts in user defaults has something in it...
+    else
+    {
+        // get array of encoded workout data
+        NSMutableArray *workoutArr = [NSMutableArray arrayWithArray:[defaults objectForKey:@"workouts"]];
+        // create a NSData encoding for the workout w (one just completed)
+        NSData *workoutHistData = [NSKeyedArchiver archivedDataWithRootObject:w];
+        // save encoded workout data to workoutArr
+        [workoutArr addObject:workoutHistData];
+        // add newly updated workout encoded data array
+        [defaults setObject:workoutArr forKey:@"workouts"];
+        NSLog(@"workout list size = %d",workoutArr.count);
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"updateLastWorkoutNotification" object: nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"updateHistoryTableNotification" object: nil];
+
 }
 
 -(void)workoutProgressThread
@@ -218,7 +246,6 @@
                             firstValues[1] = currentAccelYval;
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE DOWN PORTION");
-                            //AudioServicesPlaySystemSound (1000);
                         }
                     }
                     else
@@ -233,7 +260,7 @@
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE UP PORTION");
                             _workoutProgress.progress = actual + incrementValue;
-                            //AudioServicesPlaySystemSound (1000);
+                            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
                         }
                     }
                 }
@@ -267,7 +294,7 @@
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE UP PORTION");
                             _workoutProgress.progress = actual + incrementValue;
-                            
+                            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
                         }
                     }
                 }
@@ -301,7 +328,7 @@
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE UP PORTION");
                             _workoutProgress.progress = actual + incrementValue;
-                            
+                            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
                         }
                     }
                 }
@@ -336,7 +363,7 @@
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE UP PORTION");
                             _workoutProgress.progress = actual + incrementValue;
-                            
+                            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
                         }
                     }
                 }
@@ -371,15 +398,48 @@
                 [alert show];
                 // creates finished workout object and saves it to user defaults (saved to system)
                 Workout *w = [[Workout alloc] init];
-                WorkoutArrayManager *wm;
                 w.date = [NSDate date];
-                w.type = @"Pushups";
+                w.type = workoutSelection;
                 w.repNumber = stepVal;
                 w.completed = TRUE;
                 _lastWorkout = w;
-                NSMutableArray *workoutArr = [wm getWorkoutArrayFromDefaults];
-                [workoutArr addObject:w];
-                [defaults setObject:w forKey:@"workouts"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"MM/dd/Y hh:mm a"];
+                NSString *stringFromDate = [formatter stringFromDate:w.date];
+                [defaults setObject:stringFromDate forKey:@"lastWorkoutDate"];
+                NSLog(@"the date object for key: lastWorkoutDate has been set to = %@",stringFromDate);
+                NSLog(@"confirming above action with: %@", [defaults objectForKey:@"lastWorkoutDate"]);
+                // below is code that saves workout to iPhone workout history list
+                // if the default array for workouts is nil
+                if([defaults objectForKey:@"workouts"] == nil)
+                {
+                    // first make new array for workouts
+                    NSMutableArray *firstWorkoutArray = [[NSMutableArray alloc] init];
+                    // create a NSData encoding for the workout w (one just completed)
+                    NSData *workoutHistData = [NSKeyedArchiver archivedDataWithRootObject:w];
+                    // save workout data to array
+                    [firstWorkoutArray addObject:workoutHistData];
+                    // save workout array to workouts object
+                    [defaults setObject:firstWorkoutArray forKey:@"workouts"];
+                }
+                // if the nsmutable array for workouts in user defaults has something in it...
+                else
+                {
+                    // get array of encoded workout data 
+                    NSMutableArray *workoutArr = [NSMutableArray arrayWithArray:[defaults objectForKey:@"workouts"]];
+                    // create a NSData encoding for the workout w (one just completed)
+                    NSData *workoutHistData = [NSKeyedArchiver archivedDataWithRootObject:w];
+                    // save encoded workout data to workoutArr
+                    [workoutArr addObject:workoutHistData];
+                    // add newly updated workout encoded data array
+                    [defaults setObject:workoutArr forKey:@"workouts"];
+                }
+                // below is some debug stuff
+                //NSMutableArray *arr2 = [NSMutableArray arrayWithArray:[defaults objectForKey:@"workouts"]];
+                //Workout *wo2 = [NSKeyedUnarchiver unarchiveObjectWithData:[arr2 objectAtIndex:0]];
+                //NSLog(@"this is the type: %@",wo2.type);
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"updateLastWorkoutNotification" object: nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"updateHistoryTableNotification" object: nil];
             }
         }
         /*

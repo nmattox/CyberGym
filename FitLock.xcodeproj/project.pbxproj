@@ -52,12 +52,13 @@
 		EDF475C31714DF9400876322 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475C01714DF9400876322 /* Accounts.framework */; };
 		EDF475C41714DF9400876322 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475C11714DF9400876322 /* AdSupport.framework */; };
 		EDF475C51714DF9400876322 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475C21714DF9400876322 /* Social.framework */; };
+		EDF475C81715335A00876322 /* UserWorkoutHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF475C71715335A00876322 /* UserWorkoutHistory.m */; };
+		EDF475CA1715794B00876322 /* silhouette.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF475C91715794B00876322 /* silhouette.png */; };
 		EDF6069416C228DF00BA4CBA /* nav1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069116C228DE00BA4CBA /* nav1.png */; };
 		EDF6069516C228DF00BA4CBA /* nav2.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069216C228DE00BA4CBA /* nav2.png */; };
 		EDF6069616C228DF00BA4CBA /* nav3.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069316C228DF00BA4CBA /* nav3.png */; };
 		EDF6916417023DF30032D0A2 /* ThirdViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF6916317023DF30032D0A2 /* ThirdViewController2.m */; };
 		EDF6916717029BC20032D0A2 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF6916617029BC20032D0A2 /* Workout.m */; };
-		EDF6916A1702A2FB0032D0A2 /* WorkoutArrayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF691691702A2FB0032D0A2 /* WorkoutArrayManager.m */; };
 		EDF9DF8C1702EB1A002CABC7 /* FriBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF9DF7E1702EB19002CABC7 /* FriBlue.png */; };
 		EDF9DF8D1702EB1A002CABC7 /* FriWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF9DF7F1702EB19002CABC7 /* FriWhite.png */; };
 		EDF9DF8E1702EB1A002CABC7 /* MonBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF9DF801702EB19002CABC7 /* MonBlue.png */; };
@@ -141,6 +142,9 @@
 		EDF475C01714DF9400876322 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		EDF475C11714DF9400876322 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		EDF475C21714DF9400876322 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		EDF475C61715335A00876322 /* UserWorkoutHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserWorkoutHistory.h; sourceTree = "<group>"; };
+		EDF475C71715335A00876322 /* UserWorkoutHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserWorkoutHistory.m; sourceTree = "<group>"; };
+		EDF475C91715794B00876322 /* silhouette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silhouette.png; sourceTree = "<group>"; };
 		EDF6069116C228DE00BA4CBA /* nav1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav1.png; sourceTree = SOURCE_ROOT; };
 		EDF6069216C228DE00BA4CBA /* nav2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav2.png; sourceTree = SOURCE_ROOT; };
 		EDF6069316C228DF00BA4CBA /* nav3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav3.png; sourceTree = SOURCE_ROOT; };
@@ -148,8 +152,6 @@
 		EDF6916317023DF30032D0A2 /* ThirdViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController2.m; sourceTree = "<group>"; };
 		EDF6916517029BC20032D0A2 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		EDF6916617029BC20032D0A2 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
-		EDF691681702A2FB0032D0A2 /* WorkoutArrayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutArrayManager.h; sourceTree = "<group>"; };
-		EDF691691702A2FB0032D0A2 /* WorkoutArrayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutArrayManager.m; sourceTree = "<group>"; };
 		EDF9DF7E1702EB19002CABC7 /* FriBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriBlue.png; sourceTree = "<group>"; };
 		EDF9DF7F1702EB19002CABC7 /* FriWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriWhite.png; sourceTree = "<group>"; };
 		EDF9DF801702EB19002CABC7 /* MonBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MonBlue.png; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		ED2A498D165C7FB1008F6F82 /* FitLock2 */ = {
 			isa = PBXGroup;
 			children = (
+				EDF475C91715794B00876322 /* silhouette.png */,
 				EDF9DF7E1702EB19002CABC7 /* FriBlue.png */,
 				EDF9DF7F1702EB19002CABC7 /* FriWhite.png */,
 				EDF9DF801702EB19002CABC7 /* MonBlue.png */,
@@ -286,10 +289,10 @@
 				EDAED6A716EE8A4C0069BBF8 /* HistoryViewController.m */,
 				EDF6916517029BC20032D0A2 /* Workout.h */,
 				EDF6916617029BC20032D0A2 /* Workout.m */,
-				EDF691681702A2FB0032D0A2 /* WorkoutArrayManager.h */,
-				EDF691691702A2FB0032D0A2 /* WorkoutArrayManager.m */,
 				ED3BA5FA16D2289600722029 /* UserData.h */,
 				ED3BA5FB16D2289600722029 /* UserData.m */,
+				EDF475C61715335A00876322 /* UserWorkoutHistory.h */,
+				EDF475C71715335A00876322 /* UserWorkoutHistory.m */,
 			);
 			path = FitLock2;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				EDF9DF981702EB1A002CABC7 /* WedBlue.png in Resources */,
 				EDF9DF991702EB1A002CABC7 /* WedWhite.png in Resources */,
 				EDF475BF1714DF4A00876322 /* FacebookSDKResources.bundle in Resources */,
+				EDF475CA1715794B00876322 /* silhouette.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +488,7 @@
 				EDAED6A816EE8A4C0069BBF8 /* HistoryViewController.m in Sources */,
 				EDF6916417023DF30032D0A2 /* ThirdViewController2.m in Sources */,
 				EDF6916717029BC20032D0A2 /* Workout.m in Sources */,
-				EDF6916A1702A2FB0032D0A2 /* WorkoutArrayManager.m in Sources */,
+				EDF475C81715335A00876322 /* UserWorkoutHistory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

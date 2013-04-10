@@ -26,13 +26,59 @@
     [self setupArray];
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view, typically from a nib.
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(updateTable:) name: @"updateHistoryTableNotification" object: nil];
+
+    
+    /*
+     DEBUG: output statements below are debug and print to screen all the saved workouts on the iPhone
+     */
+    /*
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *workoutDataArr = [NSMutableArray arrayWithArray:[defaults objectForKey:@"workouts"]];
+    //Workout *wo2 = [NSKeyedUnarchiver unarchiveObjectWithData:[arr2 objectAtIndex:0]];
+    NSLog(@"workout data array size: %d",workoutDataArr.count);
+    for(int i = 0; i < workoutDataArr.count; i++)
+    {
+        Workout *wo = [NSKeyedUnarchiver unarchiveObjectWithData:[workoutDataArr objectAtIndex:i]];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MM/dd/Y hh:mm:ss"];
+        NSString *stringFromDate = [formatter stringFromDate:wo.date];
+        NSLog(@"date and time of workout: %@",stringFromDate);
+    }
+    */
+}
+
+-(void)updateTable:(NSNotification*)notification
+{
+    NSLog(@"within update table notification");
+    [self setupArray];
+    [self.tableView reloadData];
+}
+
+-(IBAction)clearHistory:(id)sender
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Clear History" message:@"Are you sure you want to clear all your workout history?" delegate:self cancelButtonTitle:@"Clear" otherButtonTitles:@"Cancel", nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        datasource = [[NSArray alloc] init];
+        [states removeAllObjects];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:nil forKey:@"workouts"];
+        [self.tableView reloadData];
+    }
 }
 
 -(void)setupArray{
     
     states = [[NSMutableDictionary alloc]init];
     
+    /*
     // test code that makes a few workouts
     Workout *w1 = [[Workout alloc] init];
     w1.date = [NSDate date];
@@ -60,21 +106,39 @@
     w5.repNumber = 15;
     w5.completed = TRUE;
     // end test code
+     
+     [states setObject:w1 forKey:@"03/26/2013 - 12:46pm"];
+     [states setObject:w2 forKey:@"03/26/2013 - 1:55pm"];
+     [states setObject:w3 forKey:@"03/26/2013 - 2:51pm"];
+     [states setObject:w4 forKey:@"03/26/2013 - 4:01pm"];
+     [states setObject:w5 forKey:@"03/26/2013 - 4:46pm"];
+     */
+     
     
-    [states setObject:w1 forKey:@"03/26/2013 - 12:46pm"];
-    [states setObject:w2 forKey:@"03/26/2013 - 1:55pm"];
-    [states setObject:w3 forKey:@"03/26/2013 - 2:51pm"];
-    [states setObject:w4 forKey:@"03/26/2013 - 4:01pm"];
-    [states setObject:w5 forKey:@"03/26/2013 - 4:46pm"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *workoutDataArr = [NSMutableArray arrayWithArray:[defaults objectForKey:@"workouts"]];
+    //Workout *wo2 = [NSKeyedUnarchiver unarchiveObjectWithData:[arr2 objectAtIndex:0]];
+    NSLog(@"workout data array size: %d",workoutDataArr.count);
+    NSMutableArray *keyArray = [[NSMutableArray alloc] init];
+    for(int i = 0; i < workoutDataArr.count; i++)
+    {
+        Workout *w = [NSKeyedUnarchiver unarchiveObjectWithData:[workoutDataArr objectAtIndex:i]];
+        NSLog(@"workout type %@",w.type);
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MM/dd/Y - hh:mm a"];
+        NSString *stringFromDate = [formatter stringFromDate:w.date];
+        [states setObject:w forKey:stringFromDate];
+        [keyArray insertObject:stringFromDate atIndex:i];
+    }
     
-    datasource = [states allKeys];
+    datasource = [[keyArray reverseObjectEnumerator] allObjects];
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 5;
+    return states.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,7 +152,7 @@
         
     }
     // Configure the cell...
-    
+    NSLog(@"%d",indexPath.row);
     cell.textLabel.text = [datasource objectAtIndex:indexPath.row];
     
     //Arrow

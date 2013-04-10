@@ -17,13 +17,14 @@
 
 #import <UIKit/UIKit.h>
 //@protocol ThirdViewController2Delegate; TODO: IMPLEMENT PROTOCOLS AND DELEGATES
-@interface ThirdViewController2 : UIViewController<UITableViewDelegate, UITableViewDataSource>{
+@interface ThirdViewController2 : UITableViewController<UITableViewDelegate, UITableViewDataSource>{
     //id<ThirdViewController2Delegate> initDelegate; TODO: IMPLEMENT PROTOCOLS AND DELEGATES
 }
 
 @property(nonatomic, retain)NSMutableDictionary *states;
 @property(nonatomic, retain)NSArray *datasource;
 -(void)setupArray;
+-(IBAction)clearHistory:(id)sender;
 
 @end
 

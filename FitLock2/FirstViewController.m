@@ -71,6 +71,9 @@
     _satButton.tag = 5;
     _sunButton.tag = 6;
     
+    // set up notification function for updating "last workout" text
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(updateLastWorkout:) name: @"updateLastWorkoutNotification" object: nil];
+    
     
     // Load user's default data
     
@@ -209,19 +212,23 @@
     if(![defaults dataForKey:@"userImage"])
     {
         // TODO: need a default "blank" image to be set
-        _profImageView.image = [UIImage imageNamed:@"me.png"];
+        _profImageView.image = [UIImage imageNamed:@"silhouette.png"];
     }
     else
     {
         _profImageView.image = [UIImage imageWithData:[defaults dataForKey:@"userImage"]];
     }
-    if(![defaults objectForKey:@"workouts"])
+    
+    // set last workout text
+    _lastWorkedOutText.font = [UIFont systemFontOfSize:16.0];
+    if([defaults objectForKey:@"lastWorkoutDate"]  == nil)
     {
-        [defaults setObject:[[NSArray alloc] init] forKey:@"workouts"];
+        NSLog(@"object for key == nill %@", [defaults objectForKey:@"lastWorkoutDate"]);
+        _lastWorkedOutText.text = @"N/A";
     }
     else
     {
-        // TODO: don't think we really need to load the array from defaults here
+        _lastWorkedOutText.text = [defaults objectForKey:@"lastWorkoutDate"];
     }
     
     
@@ -379,12 +386,19 @@
     [updateForm show];
 }
 
+-(void)updateLastWorkout:(NSNotification*)notification
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _lastWorkedOutText.text = [defaults objectForKey:@"lastWorkoutDate"];
+}
+
 /*
  Function goes through all fields in submitted alertView form. Once it finds the text field, it stores the updated name
  to the UserDefaults
  */
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSLog(@"alert view index = %d",buttonIndex);
     if (buttonIndex != 0)  // 0 == the cancel button
     {
         for (UIView* view in alertView.subviews)
@@ -392,11 +406,14 @@
             if ([view isKindOfClass:[UITextField class]])
             {
                 UITextField* textField = (UITextField*)view;
-                NSLog(@"This name stored to user defaults:[%@]", textField.text);
-                // Store the data
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:textField.text forKey:@"userName"];
-                _nameText.text = textField.text;
+                if([textField.text length] > 0)
+                {
+                    NSLog(@"This name stored to user defaults:[%@]", textField.text);
+                    // Store the data
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:textField.text forKey:@"userName"];
+                    _nameText.text = textField.text;
+                }
                 break;
             }
         }

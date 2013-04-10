@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) SecondViewController *secondView;
+@property (strong, nonatomic) ThirdViewController2 *thirdView;
 @property (strong, nonatomic) FBSession *session;
 
 
