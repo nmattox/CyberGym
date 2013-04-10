@@ -47,6 +47,11 @@
 		EDAED6A816EE8A4C0069BBF8 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAED6A716EE8A4C0069BBF8 /* HistoryViewController.m */; };
 		EDD77B4C16E54FC700335F1E /* pencil-1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD77B4B16E54FC700335F1E /* pencil-1.png */; };
 		EDD77B4E16E5773A00335F1E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */; };
+		EDF475BD1714DF0800876322 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475BC1714DF0800876322 /* FacebookSDK.framework */; };
+		EDF475BF1714DF4A00876322 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EDF475BE1714DF4A00876322 /* FacebookSDKResources.bundle */; };
+		EDF475C31714DF9400876322 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475C01714DF9400876322 /* Accounts.framework */; };
+		EDF475C41714DF9400876322 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475C11714DF9400876322 /* AdSupport.framework */; };
+		EDF475C51714DF9400876322 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF475C21714DF9400876322 /* Social.framework */; };
 		EDF6069416C228DF00BA4CBA /* nav1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069116C228DE00BA4CBA /* nav1.png */; };
 		EDF6069516C228DF00BA4CBA /* nav2.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069216C228DE00BA4CBA /* nav2.png */; };
 		EDF6069616C228DF00BA4CBA /* nav3.png in Resources */ = {isa = PBXBuildFile; fileRef = EDF6069316C228DF00BA4CBA /* nav3.png */; };
@@ -131,6 +136,11 @@
 		EDAED6A716EE8A4C0069BBF8 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		EDD77B4B16E54FC700335F1E /* pencil-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil-1.png"; sourceTree = "<group>"; };
 		EDD77B4D16E5773A00335F1E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EDF475BC1714DF0800876322 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		EDF475BE1714DF4A00876322 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		EDF475C01714DF9400876322 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		EDF475C11714DF9400876322 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		EDF475C21714DF9400876322 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		EDF6069116C228DE00BA4CBA /* nav1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav1.png; sourceTree = SOURCE_ROOT; };
 		EDF6069216C228DE00BA4CBA /* nav2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav2.png; sourceTree = SOURCE_ROOT; };
 		EDF6069316C228DF00BA4CBA /* nav3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav3.png; sourceTree = SOURCE_ROOT; };
@@ -161,10 +171,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDF475C31714DF9400876322 /* Accounts.framework in Frameworks */,
+				EDF475C41714DF9400876322 /* AdSupport.framework in Frameworks */,
+				EDF475C51714DF9400876322 /* Social.framework in Frameworks */,
 				EDD77B4E16E5773A00335F1E /* AudioToolbox.framework in Frameworks */,
 				ED2A4988165C7FB1008F6F82 /* UIKit.framework in Frameworks */,
 				ED2A498A165C7FB1008F6F82 /* Foundation.framework in Frameworks */,
 				ED2A498C165C7FB1008F6F82 /* CoreGraphics.framework in Frameworks */,
+				EDF475BD1714DF0800876322 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +223,11 @@
 		ED2A4986165C7FB1008F6F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDF475C01714DF9400876322 /* Accounts.framework */,
+				EDF475C11714DF9400876322 /* AdSupport.framework */,
+				EDF475C21714DF9400876322 /* Social.framework */,
+				EDF475BE1714DF4A00876322 /* FacebookSDKResources.bundle */,
+				EDF475BC1714DF0800876322 /* FacebookSDK.framework */,
 				ED2A4987165C7FB1008F6F82 /* UIKit.framework */,
 				ED2A4989165C7FB1008F6F82 /* Foundation.framework */,
 				ED2A498B165C7FB1008F6F82 /* CoreGraphics.framework */,
@@ -420,6 +439,7 @@
 				EDF9DF971702EB1A002CABC7 /* TueWhite.png in Resources */,
 				EDF9DF981702EB1A002CABC7 /* WedBlue.png in Resources */,
 				EDF9DF991702EB1A002CABC7 /* WedWhite.png in Resources */,
+				EDF475BF1714DF4A00876322 /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,9 +597,17 @@
 		ED2A49CB165C7FB1008F6F82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FitLock2/FitLock-Prefix.pch";
 				INFOPLIST_FILE = "FitLock2/FitLock-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = FitLock;
 				WRAPPER_EXTENSION = app;
 			};
@@ -588,9 +616,17 @@
 		ED2A49CC165C7FB1008F6F82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FitLock2/FitLock-Prefix.pch";
 				INFOPLIST_FILE = "FitLock2/FitLock-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = FitLock;
 				WRAPPER_EXTENSION = app;
 			};

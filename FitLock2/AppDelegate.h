@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 #import "SecondViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-{
-    SecondViewController *secondView;
-}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) SecondViewController *secondView;
+@property (strong, nonatomic) FBSession *session;
+
 
 @end

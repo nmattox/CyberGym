@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ThirdViewController2.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "Workout.h"
 
-@interface SecondViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIAccelerometerDelegate>{
+@interface SecondViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIAccelerometerDelegate, FBLoginViewDelegate>{
     //UIPickerView *workoutPicker;
     //NSMutableArray *workoutList;
     UILabel *workoutLabel;
@@ -19,6 +21,7 @@
     UIButton *cancelButton;
     UIProgressView *workoutProgress;
     bool workingOut;
+    Workout *lastWorkout;
     
     // below are some variables specific to the workout thread process
     double progress;
@@ -70,6 +73,12 @@
 
 @property (nonatomic, retain) UIAccelerometer *accelerometer;
 
+@property Workout *lastWorkout;
+
+// below are facebook properties
+
+@property (strong, nonatomic) id<FBGraphUser> loggedInUser;
+
 -(IBAction)plusButtonHit:(id)sender;
 
 -(IBAction)startButtonHit:(id)sender;
@@ -81,5 +90,8 @@
 -(IBAction)hideWorkoutSelector:(id)sender;
 
 -(void)workoutProgressThread:(double)sv;
+
+// below are added facebook functions
+-(void)facebookPost;
 
 @end

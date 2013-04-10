@@ -11,12 +11,13 @@
 #import "Workout.h"
 #import "ThirdViewController2.h"
 #import "WorkoutArrayManager.h"
+#import "AppDelegate.h"
 
 @interface SecondViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation SecondViewController 
 
 //@synthesize workoutPicker = _workoutPicker;
 
@@ -31,6 +32,10 @@
 @synthesize cancelButton = _cancelButton;
 
 @synthesize workoutProgress = _workoutProgress;
+
+@synthesize loggedInUser = _loggedInUser;
+
+@synthesize lastWorkout = _lastWorkout;
 
 //@synthesize workoutList = _workoutList;
 
@@ -87,6 +92,26 @@
     
     // initialize cancel button
     _cancelButton.hidden = true;
+    
+    // added facebook initialization stuff
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (!appDelegate.session.isOpen) {
+        // create a fresh session object
+        appDelegate.session = [[FBSession alloc] init];
+        
+        // if we don't have a cached token, a call to open here would cause UX for login to
+        // occur; we don't want that to happen unless the user clicks the login button, and so
+        // we check here to make sure we have a token before calling open
+        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
+            // even though we had a cached token, we need to login to make the session usable
+            [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                             FBSessionState status,
+                                                             NSError *error) {
+                // we recurse here, in order to update buttons and labels
+                //[self updateView];
+            }];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,8 +205,9 @@
                 [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
                 
                  //PUSHUPS
-                //if([workoutSelection isEqualToString:@"Pushups"])
-                //{
+                if([workoutSelection isEqualToString:@"Pushups"])
+                {
+                    NSLog(@"within pushups");
                     if(!down)
                     {
                         if(yVariance > .7)
@@ -192,7 +218,7 @@
                             firstValues[1] = currentAccelYval;
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE DOWN PORTION");
-                            AudioServicesPlaySystemSound (1000);
+                            //AudioServicesPlaySystemSound (1000);
                         }
                     }
                     else
@@ -207,15 +233,16 @@
                             firstValues[2] = currentAccelZval;
                             NSLog(@"FINISHED THE UP PORTION");
                             _workoutProgress.progress = actual + incrementValue;
-                            AudioServicesPlaySystemSound (1000);
+                            //AudioServicesPlaySystemSound (1000);
                         }
                     }
-                //}
+                }
                 
-                /*
                  //sit-ups
-                else if([workoutSelection isEqualToString:@"Sit-ups"])
+                else if([workoutSelection isEqualToString:@"Sit-Ups"])
                 {
+                    NSLog(@"within sit ups");
+
                     if(!down)
                     {
                         if(yVariance > .6)
@@ -248,6 +275,8 @@
                 //squats
                 else if([workoutSelection isEqualToString:@"Squats"])
                 {
+                    NSLog(@"within squats");
+
                     if(!down)
                     {
                         if(zVariance > .65)
@@ -279,8 +308,10 @@
                 
                 // pull-ups
                 
-                else if([workoutSelection isEqualToString:@"Pull-ups"])
+                else if([workoutSelection isEqualToString:@"Pull-Ups"])
                 {
+                    NSLog(@"within pull ups");
+
                     if(!down)
                     {
                         if(zVariance > .4)
@@ -311,8 +342,8 @@
                 }
                 else
                 {
-                    NSLog(@"ERROR: we shouldn't get to this part of the code");
-                }*/
+                    NSLog(@"ERROR: we shouldn't get to this part of the code. Workout selection: %@... equal to situps ? %d",workoutSelection, [workoutSelection isEqualToString:@"Sit-Ups"]);
+                }
                 
                 /* below iff statement is the "flick" accelerometer test
                 if(ABS(lastAccelYval - currentAccelYval) > .8)
@@ -338,7 +369,6 @@
                 UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!" message:@"You've successfully reached your workout goal!" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Post to Facebook", nil];
                 alert.alertViewStyle = UIAlertViewStyleDefault;
                 [alert show];
-                
                 // creates finished workout object and saves it to user defaults (saved to system)
                 Workout *w = [[Workout alloc] init];
                 WorkoutArrayManager *wm;
@@ -346,6 +376,7 @@
                 w.type = @"Pushups";
                 w.repNumber = stepVal;
                 w.completed = TRUE;
+                _lastWorkout = w;
                 NSMutableArray *workoutArr = [wm getWorkoutArrayFromDefaults];
                 [workoutArr addObject:w];
                 [defaults setObject:w forKey:@"workouts"];
@@ -442,5 +473,146 @@
     workoutSelection = [workoutList objectAtIndex:row];
     NSLog(@"Selected workout: %@. Index of selected workout: %i", [workoutList objectAtIndex:row], row);
 }
+
+//alertview button click
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        [self facebookPost];
+    }
+}
+
+/*
+ Below is Facebook API calls for posting workouts to wall
+ */
+
+-(void)facebookPost
+{
+    // get the app delegate so that we can access the session property
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+    // this button's job is to flip-flop the session from open to closed
+    if (!appDelegate.session.isOpen)
+    {
+        if (appDelegate.session.state != FBSessionStateCreated) {
+            // Create a new, logged out session.
+            appDelegate.session = [[FBSession alloc] init];
+        }
+        
+        // if the session isn't open, let's open it now and present the login UX to the user
+        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                         FBSessionState status,
+                                                         NSError *error) {
+            // and here we make sure to update our UX according to the new session state
+            //[self updateView];
+        }];
+    }
+    NSLog(@"is the session open at the end? shoudl be... %d",appDelegate.session.isOpen);
+    [self postStatusUpdateClick];
+}
+
+//Two functions below have to do with publishing to wall
+// Post Status Update button handler; will attempt to invoke the native
+// share dialog and, if that's unavailable, will post directly
+- (void)postStatusUpdateClick {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSLog(@"within post workout to wall function... is session open? %d", appDelegate.session.isOpen);
+    // Post a status update to the user's feed via the Graph API, and display an alert view
+    // with the results or an error.
+    
+    // if it is available to us, we will post using the native dialog
+    NSLog(@"last workout info:type %@", _lastWorkout.type);
+    NSString *message = @"I completed";
+    message = [message stringByAppendingFormat:@" %d %@ using FitLock on my iPhone!", _lastWorkout.repNumber, [_lastWorkout.type lowercaseString]];
+    UIImage *fitLockLogo = [UIImage imageNamed:@"icon_retina"];
+    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
+                                                                initialText:message
+                                                                          image:nil
+                                                                            url:nil
+                                                                        handler:nil];
+    /* this is automated message... might want to have this at some point
+    if (!displayedNativeDialog) {
+        
+        [self performPublishAction:^{
+            // otherwise fall back on a request for permissions and a direct post
+            NSString *message = [NSString stringWithFormat:@"Updating status for %@ at %@", self.loggedInUser.first_name, [NSDate date]];
+            
+            [FBRequestConnection startForPostStatusUpdate:message
+                                        completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                            
+                                            //[self showAlert:message result:result error:error];
+                                            //self.buttonPostStatus.enabled = YES;
+                                        }];
+            
+            //self.buttonPostStatus.enabled = NO;
+        }];
+    }*/
+}
+
+// Convenience method to perform some action that requires the "publish_actions" permissions.
+- (void) performPublishAction:(void (^)(void)) action {
+    // we defer request for permission to post to the moment of post, then we check for the permission
+    if ([FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
+        // if we don't already have the permission, then we request it now
+        [FBSession.activeSession requestNewPublishPermissions:@[@"publish_actions"]
+                                              defaultAudience:FBSessionDefaultAudienceFriends
+                                            completionHandler:^(FBSession *session, NSError *error) {
+                                                if (!error) {
+                                                    action();
+                                                }
+                                                //For this example, ignore errors (such as if user cancels).
+                                            }];
+    } else {
+        action();
+    }
+    
+}
+
+// Do we need the below?
+
+#pragma mark - FBLoginViewDelegate
+
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    // first get the buttons set for login mode
+    //self.buttonPostPhoto.enabled = YES;
+    //self.buttonPostStatus.enabled = YES;
+    //self.buttonPickFriends.enabled = YES;
+    //self.buttonPickPlace.enabled = YES;
+}
+
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
+                            user:(id<FBGraphUser>)user {
+    // here we use helper properties of FBGraphUser to dot-through to first_name and
+    // id properties of the json response from the server; alternatively we could use
+    // NSDictionary methods such as objectForKey to get values from the my json object
+    //self.labelFirstName.text = [NSString stringWithFormat:@"Hello %@!", user.first_name];
+    // setting the profileID property of the FBProfilePictureView instance
+    // causes the control to fetch and display the profile picture for the user
+    //self.profilePic.profileID = user.id;
+    self.loggedInUser = user;
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    BOOL canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
+    //self.buttonPostPhoto.enabled = canShareAnyhow;
+    //self.buttonPostStatus.enabled = canShareAnyhow;
+    //self.buttonPickFriends.enabled = NO;
+    //self.buttonPickPlace.enabled = NO;
+    
+    //self.profilePic.profileID = nil;
+    //self.labelFirstName.text = nil;
+    self.loggedInUser = nil;
+}
+
+- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
+    // see https://developers.facebook.com/docs/reference/api/errors/ for general guidance on error handling for Facebook API
+    // our policy here is to let the login view handle errors, but to log the results
+    NSLog(@"FBLoginView encountered an error=%@", error);
+}
+
+#pragma mark -
+ 
+
 
 @end
