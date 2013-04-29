@@ -193,7 +193,7 @@
     }
     [[NSNotificationCenter defaultCenter] postNotificationName: @"updateLastWorkoutNotification" object: nil];
     [[NSNotificationCenter defaultCenter] postNotificationName: @"updateHistoryTableNotification" object: nil];
-
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 -(void)workoutProgressThread
@@ -203,6 +203,10 @@
         //NSLog(@"workout counter = %d", workoutThreadCounter);
         if(workoutThreadCounter == 0) // TODO: change workoutThreadCounter to boolean
         {
+            
+            // this makes iphone app not go to sleep
+            [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+            
             _startButton.hidden = true;
             _cancelButton.hidden = false;
             [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(workoutProgressThread) userInfo:nil repeats:NO];
@@ -440,6 +444,9 @@
                 //NSLog(@"this is the type: %@",wo2.type);
                 [[NSNotificationCenter defaultCenter] postNotificationName: @"updateLastWorkoutNotification" object: nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName: @"updateHistoryTableNotification" object: nil];
+                
+                [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+
             }
         }
         /*
