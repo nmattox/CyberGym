@@ -310,7 +310,7 @@
 
                     if(!down)
                     {
-                        if(zVariance > .60)
+                        if(zVariance > .50)
                         {
                             down = true;
                             directionChangeCount = 0;
@@ -323,7 +323,7 @@
                     else
                     {
                         
-                        if(zVariance > .60)
+                        if(zVariance > .50)
                         {
                             down = false;
                             directionChangeCount = 0;
